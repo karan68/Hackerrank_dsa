@@ -1,0 +1,47 @@
+#include <cmath>
+#include <cstdio>
+#include <stack>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int N;
+    cin>>N;
+    stack<string>stk; //this stack will be used for undo option
+  
+    string st =""; // this will be the main string
+    while(N--){
+        int n; cin>>n;
+        if(n==1){
+            string str;
+            cin>>str;
+            stk.push(st); //inserting the string in stack so to pop it up for undo operation
+            st+=str;
+          
+        }
+        else if(n==2)
+        {
+            int d;
+            cin >> d;
+            stk.push(st); //doing the same for the same reason stated in case 1
+           st.erase(st.size()-d); //erasing the string after st.size()-k
+        }
+        else if(n==3)
+        {
+             int k;cin>>k;
+            cout<<st[k-1]<<endl; //printing the string
+        }
+        else 
+        {
+            st = stk.top(); //assigning the string as the top value of stack
+            stk.pop(); //popping the stack 
+        }
+        
+        
+}
+return 0;
+}
