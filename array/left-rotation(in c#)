@@ -1,0 +1,102 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution
+{
+
+   
+  public static void rotateLeft( List<int> arr,int n,int d)
+    {
+         int mod = d % n;
+
+    // Prints the rotated array from start position
+     for (int i = 0; i < n; ++i)
+            Console.Write(arr[(i + mod) % n] + " ");
+ 
+        Console.WriteLine();
+
+    
+
+    }
+
+
+    public static void Main(string[] args)
+    {
+      
+
+        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+
+        int n = Convert.ToInt32(firstMultipleInput[0]);
+
+        int d = Convert.ToInt32(firstMultipleInput[1]);
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+       rotateLeft( arr,n,d);
+
+        
+    }
+}
+
+
+//other method using array methods
+/* 
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        
+
+        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+
+        int n = Convert.ToInt32(firstMultipleInput[0]);
+
+        int d = Convert.ToInt32(firstMultipleInput[1]);
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+      int[] arr1 = new int[d]; //declaring array with size d
+     int[] arr2 = new int[n-d]; //declaring array with size n-d
+     
+     
+     arr.CopyTo(0, arr1, 0, d); //copying the list arr to array arr1 using copyTo
+     arr.CopyTo(d, arr2, 0, n-d); //copying the list arr to array arr2 using copyTo
+     
+    var myList = new List<int>(); 
+      myList.AddRange(arr2); //adding those arrays to new list
+      myList.AddRange(arr1);
+      
+      
+      foreach (int res in myList) {
+         Console.Write(res + " ");
+      }
+}
+}
+*/
